@@ -1,0 +1,21 @@
+{
+  "generator-template-ui5-project": {
+    "projectname": "ftapp",
+    "namespaceUI5": "ft.ui5",
+    "platform": "Static webserver",
+    "viewtype": "XML",
+    "ui5libs": "Content delivery network (OpenUI5)",
+    "newdir": false,
+    "namespaceURI": "ft/ui5",
+    "opa5pos": [
+      "Main"
+    ],
+    "opa5Journeys": [
+      "Main"
+    ],
+    "uimodules": [
+      "uimodule"
+    ],
+    "setupCompleted": true
+  }
+}
