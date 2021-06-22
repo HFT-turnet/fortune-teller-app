@@ -1,0 +1,15 @@
+ <mvc:View controllerName="ft.ui5.ftapp.controller.timevalue"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc">
+  <App id="timevalue" >
+    <pages>
+      <Page title="{i18n>title}"
+  		showNavButton="true"
+  		navButtonPress="onNavBack">
+		
+        <content></content>
+      </Page>
+    </pages>
+  </App>
+</mvc:View>

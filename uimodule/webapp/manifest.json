@@ -74,7 +74,16 @@
         {
           "name": "RouteMainView",
           "pattern": "RouteMainView",
-          "target": ["TargetMainView"]
+          "target": [
+            "TargetMainView"
+          ]
+        },
+        {
+          "name": "timevalue",
+          "pattern": "Routetimevalue",
+          "target": [
+            "Targettimevalue"
+          ]
         }
       ],
       "targets": {
@@ -83,6 +92,11 @@
           "viewLevel": 1,
           "viewId": "idAppControl",
           "viewName": "MainView"
+        },
+        "Targettimevalue": {
+          "viewType": "XML",
+          "viewId": "timevalue",
+          "viewName": "timevalue"
         }
       }
     }

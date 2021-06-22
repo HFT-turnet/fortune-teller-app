@@ -20,20 +20,20 @@
 					<f:layoutXS>
 						<f:GridContainerSettings rowSize="70px" columnSize="70px" gap="8px" />
 					</f:layoutXS>
-		   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="App 1" subheader="Supercool" press="handleTilePress" url="{url}">
+		   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Timevalue" subheader="Simulate amounts" press="handleTilePress" url="timevalue">
 						<layoutData>
 							<f:GridContainerItemLayoutData minRows="2" columns="2" />
 						</layoutData>
-						<TileContent footer="Hallo" >
-							<ImageContent src="sap-icon://account" />
+						<TileContent footer="any Currency" >
+							<ImageContent src="sap-icon://time-overtime" />
 		   				</TileContent>
 		   			</GenericTile>
-		   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="App 2" subheader="Cooler" press="handleTilePress" url="{url}">
+		   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Site Info" subheader="" press="handleTilePress" url="info">
 						<layoutData>
 							<f:GridContainerItemLayoutData minRows="2" columns="2" />
 						</layoutData>
-						<TileContent footer="Test" >
-							<ImageContent src="sap-icon://account" />
+						<TileContent footer="" >
+							<ImageContent src="sap-icon://hint" />
 		   				</TileContent>
 		   			</GenericTile>
 				</f:GridContainer>
