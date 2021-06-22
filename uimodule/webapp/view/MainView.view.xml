@@ -44,14 +44,7 @@
 				            icon="sap-icon://account"
 							text="Login"
 				            press="onOpenLoginDialog" />
-					<Button
-		  	          		icon="sap-icon://customize"
-							text="Variables"
-		  	          	  	press="onOpenVariablesDialog" />
 					<Button text="Logout" press="onLogout" />
-					<Button
-							text="Repair"
-				  	        press="refreshConfig" />
 				<ToolbarSpacer/>
 			</Toolbar>
 		</footer>
