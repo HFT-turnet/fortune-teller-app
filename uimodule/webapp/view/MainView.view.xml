@@ -1,12 +1,62 @@
  <mvc:View controllerName="ft.ui5.ftapp.controller.MainView"
   displayBlock="true"
   xmlns="sap.m"
-  xmlns:mvc="sap.ui.core.mvc">
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:f="sap.f"
+  >
   <App id="idAppControl" >
     <pages>
-      <Page title="{i18n>title}">
-        <content></content>
-      </Page>
-    </pages>
-  </App>
+		<Page
+		showHeader="true"
+		enableScrolling="true" 
+		title="{i18n>title}">
+		<f:GridContainer
+					id="grid1"
+					class="sapUiSmallMargin"
+					snapToRow="true">
+					<f:layout>
+						<f:GridContainerSettings rowSize="84px" columnSize="84px" gap="8px" />
+					</f:layout>
+					<f:layoutXS>
+						<f:GridContainerSettings rowSize="70px" columnSize="70px" gap="8px" />
+					</f:layoutXS>
+		   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="App 1" subheader="Supercool" press="handleTilePress" url="{url}">
+						<layoutData>
+							<f:GridContainerItemLayoutData minRows="2" columns="2" />
+						</layoutData>
+						<TileContent footer="Hallo" >
+							<ImageContent src="sap-icon://account" />
+		   				</TileContent>
+		   			</GenericTile>
+		   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="App 2" subheader="Cooler" press="handleTilePress" url="{url}">
+						<layoutData>
+							<f:GridContainerItemLayoutData minRows="2" columns="2" />
+						</layoutData>
+						<TileContent footer="Test" >
+							<ImageContent src="sap-icon://account" />
+		   				</TileContent>
+		   			</GenericTile>
+				</f:GridContainer>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				 	<Button
+				            icon="sap-icon://account"
+							text="Login"
+				            press="onOpenLoginDialog" />
+					<Button
+		  	          		icon="sap-icon://customize"
+							text="Variables"
+		  	          	  	press="onOpenVariablesDialog" />
+					<Button text="Logout" press="onLogout" />
+					<Button
+							text="Repair"
+				  	        press="refreshConfig" />
+				<ToolbarSpacer/>
+			</Toolbar>
+		</footer>
+	</Page>
+  </pages>
+</App>
+  
 </mvc:View>
