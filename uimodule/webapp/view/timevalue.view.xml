@@ -1,14 +1,114 @@
  <mvc:View controllerName="ft.ui5.ftapp.controller.timevalue"
   displayBlock="true"
   xmlns="sap.m"
-  xmlns:mvc="sap.ui.core.mvc">
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:l="sap.ui.layout"
+  xmlns:f="sap.f"
+  xmlns:card="sap.f.cards">
   <App id="timevalue" >
     <pages>
       <Page title="{i18n>title}"
   		showNavButton="true"
   		navButtonPress="onNavBack">
-		
-        <content></content>
+        <content>
+			<f:GridContainer id="demoGrid" class="sapUiSmallMargin" columnsChange=".onGridColumnsChange">
+				<f:layout>
+					<f:GridContainerSettings rowSize="84px" columnSize="84px" gap="8px" />
+				</f:layout>
+				<f:layoutXS>
+					<f:GridContainerSettings rowSize="70px" columnSize="70px" gap="8px" />
+				</f:layoutXS>
+				<f:Card>
+					<f:layoutData>
+						<f:GridContainerItemLayoutData columns="6" />
+					</f:layoutData>
+					<f:header>
+						<card:Header
+							title="Enter assumptions here"
+							press="getSimulation"/>
+					</f:header>
+					<f:content>
+						<l:VerticalLayout class="sapUiContentPadding">
+							<l:HorizontalLayout class="sapUiContentPadding" >
+								<Input
+									id="inputStartva"
+									type="Number"
+									placeholder="100"
+									class="sapUiSmallMarginBottom" />
+								<Text text="EUR in month "/>
+								<DatePicker
+									id="DP10"
+									value="2021-07-01"
+									displayFormat="MM-y"
+									change="handleChange"
+									class="sapUiSmallMarginBottom"/>
+							</l:HorizontalLayout>
+							<l:HorizontalLayout class="sapUiContentPadding" >			
+								<Text text="to be simulated in month "/>
+							<DatePicker
+									id="DP11"
+									value="2021-06-06"
+									displayFormat="MM-y"
+									change="handleChange"
+									class="sapUiSmallMarginBottom" />
+							</l:HorizontalLayout>
+							<l:HorizontalLayout class="sapUiContentPadding" >	
+							<Text text="with a percentage inflation rate of "/>
+							<StepInput
+									id="inputIrate"
+									value="2%"
+									displayValuePrecision="1"
+									min="0"
+									max="100"
+									width="3px"
+									step="1"
+									change="onChange" />
+							</l:HorizontalLayout>
+							<Button text="Simulate" type="Emphasized" />
+						</l:VerticalLayout>
+					</f:content>
+				</f:Card>
+				<f:Card>
+					<f:layoutData>
+						<f:GridContainerItemLayoutData minRows="4" columns="4" />
+					</f:layoutData>
+					<f:header>
+						<card:Header title="Timevalue Overview" subtitle="Purchase power per year | EUR" />
+					</f:header>
+					<f:content>
+						
+						<List showSeparators="None" >
+							<CustomListItem>
+								<HBox alignItems="Center" justifyContent="SpaceBetween">
+									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+										<Title level="H3" text="Today" />
+										<Text text="EUR" />
+									</VBox>
+									<ObjectStatus
+										class="sapUiTinyMargin"
+										text="100"
+										state= "None" />
+								</HBox>
+							</CustomListItem>
+							<CustomListItem>
+								<HBox alignItems="Center" justifyContent="SpaceBetween">
+									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+										<Title level="H3" text="Future" />
+										<Text text="EUR" />
+									</VBox>
+									<ObjectStatus
+										class="sapUiTinyMargin"
+										text="1010"
+										state= "None" />
+								</HBox>
+							</CustomListItem>
+						</List>
+					</f:content>
+				</f:Card>
+				
+				
+			</f:GridContainer>
+        </content>
       </Page>
     </pages>
   </App>
