@@ -7,7 +7,7 @@
   xmlns:card="sap.f.cards">
   <App id="timevalue" >
     <pages>
-      <Page title="{i18n>title}"
+      <Page title="{i18n>tv.apptitle}"
   		showNavButton="true"
   		navButtonPress="onNavBack">
         <content>
@@ -24,8 +24,7 @@
 					</f:layoutData>
 					<f:header>
 						<card:Header
-							title="Enter assumptions here"
-							press="getSimulation"/>
+							title="{i18n>explain.getassumption}"/>
 					</f:header>
 					<f:content>
 						<l:VerticalLayout class="sapUiContentPadding">
@@ -34,8 +33,10 @@
 									id="inputStartva"
 									type="Number"
 									placeholder="100"
+									value="{/newvalue}"
+									valueLiveUpdate="true"
 									class="sapUiSmallMarginBottom" />
-								<Text text="EUR in month "/>
+								<Text text="{i18n>base.currency} {i18n>explain.attime}"/>
 								<DatePicker
 									id="DP10"
 									value="2021-07-01"
@@ -44,7 +45,7 @@
 									class="sapUiSmallMarginBottom"/>
 							</l:HorizontalLayout>
 							<l:HorizontalLayout class="sapUiContentPadding" >			
-								<Text text="to be simulated in month "/>
+								<Text text="{i18n>explain.tobesimulated} {i18n>explain.attime}"/>
 							<DatePicker
 									id="DP11"
 									value="2021-06-06"
@@ -53,7 +54,7 @@
 									class="sapUiSmallMarginBottom" />
 							</l:HorizontalLayout>
 							<l:HorizontalLayout class="sapUiContentPadding" >	
-							<Text text="with a percentage inflation rate of "/>
+							<Text text="{i18n>explain.withpercyear} {i18n>explain.inflation} {i18n>explain.of}"/>
 							<StepInput
 									id="inputIrate"
 									value="2%"
@@ -64,7 +65,7 @@
 									step="1"
 									change="onChange" />
 							</l:HorizontalLayout>
-							<Button text="Simulate" type="Emphasized" />
+							<Button text="{i18n>button.simulate}" type="Emphasized" press="doSimulation" />
 						</l:VerticalLayout>
 					</f:content>
 				</f:Card>
@@ -86,7 +87,7 @@
 									</VBox>
 									<ObjectStatus
 										class="sapUiTinyMargin"
-										text="100"
+										text="{/newvalue}"
 										state= "None" />
 								</HBox>
 							</CustomListItem>

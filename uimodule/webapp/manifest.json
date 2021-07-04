@@ -3,12 +3,15 @@
   "sap.app": {
     "id": "ft.ui5.ftapp",
     "type": "application",
-    "i18n": "i18n/i18n.properties",
+    "i18n": {
+            "bundleUrl": "i18n/i18n.properties",
+            "supportedLocales": ["en", "de"],
+            "fallbackLocale": "en"
+        	},
     "applicationVersion": {
       "version": "1.0.0"
     },
-    "title": "{{appTitle}}",
-    "description": "{{appDescription}}"
+    "title": "UI5 Fortune-Teller"
   },
   "sap.ui": {
     "technology": "UI5",
@@ -50,7 +53,10 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "ft.ui5.ftapp.i18n.i18n"
+			"bundleUrl": "i18n/i18n.properties",
+			"supportedLocales": ["en", "de"],
+			"fallbackLocale": "en",
+  		  	"async": true
         }
       }
     },
