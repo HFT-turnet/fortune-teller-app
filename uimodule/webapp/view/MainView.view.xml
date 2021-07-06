@@ -9,7 +9,7 @@
 		<Page
 		showHeader="true"
 		enableScrolling="true" 
-		title="{i18n>base.appTitle}">
+		title="{i18n>base.title}">
 		<f:GridContainer
 					id="grid1"
 					class="sapUiSmallMargin"

@@ -33,7 +33,7 @@
 									id="inputStartva"
 									type="Number"
 									placeholder="100"
-									value="{/newvalue}"
+									value="{/sv}"
 									valueLiveUpdate="true"
 									class="sapUiSmallMarginBottom" />
 								<Text text="{i18n>base.currency} {i18n>explain.attime}"/>
@@ -57,7 +57,7 @@
 							<Text text="{i18n>explain.withpercyear} {i18n>explain.inflation} {i18n>explain.of}"/>
 							<StepInput
 									id="inputIrate"
-									value="2%"
+									value="{/interest}"
 									displayValuePrecision="1"
 									min="0"
 									max="100"
@@ -87,7 +87,7 @@
 									</VBox>
 									<ObjectStatus
 										class="sapUiTinyMargin"
-										text="{/newvalue}"
+										text="{/sv}"
 										state= "None" />
 								</HBox>
 							</CustomListItem>

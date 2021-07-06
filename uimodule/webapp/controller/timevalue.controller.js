@@ -11,7 +11,12 @@ sap.ui.define([
                newvalue : 100
                }
 			var dataset = new JSONModel(oData);
-			//console.log(dataset);
+			//var oHeaders = {
+			//			    "Origin": "https://api.fortune-teller.me"
+			//			};
+			dataset.loadData("https://api.fortune-teller.me/v1/calcs/tv_model", '', true, "GET", null, false,'');
+			
+			console.log(dataset);
 			this.setModel(dataset);
 		},
 		
