@@ -33,13 +33,12 @@
 									id="inputStartva"
 									type="Number"
 									placeholder="100"
-									value="{/sv}"
+									value="{/tvs/0/sv}"
 									valueLiveUpdate="true"
 									class="sapUiSmallMarginBottom" />
 								<Text text="{i18n>base.currency} {i18n>explain.attime}"/>
 								<DatePicker
-									id="DP10"
-									value="2021-07-01"
+									id="datepickerStart"
 									displayFormat="MM-y"
 									change="handleChange"
 									class="sapUiSmallMarginBottom"/>
@@ -47,8 +46,7 @@
 							<l:HorizontalLayout class="sapUiContentPadding" >			
 								<Text text="{i18n>explain.tobesimulated} {i18n>explain.attime}"/>
 							<DatePicker
-									id="DP11"
-									value="2021-06-06"
+									id="datepickerEnd"
 									displayFormat="MM-y"
 									change="handleChange"
 									class="sapUiSmallMarginBottom" />
@@ -57,7 +55,7 @@
 							<Text text="{i18n>explain.withpercyear} {i18n>explain.inflation} {i18n>explain.of}"/>
 							<StepInput
 									id="inputIrate"
-									value="{/interest}"
+									value="{/r}"
 									displayValuePrecision="1"
 									min="0"
 									max="100"
@@ -82,12 +80,14 @@
 							<CustomListItem>
 								<HBox alignItems="Center" justifyContent="SpaceBetween">
 									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
-										<Title level="H3" text="Today" />
-										<Text text="EUR" />
+										<Title level="H3" text="{/from}" />
 									</VBox>
 									<ObjectStatus
 										class="sapUiTinyMargin"
-										text="{/sv}"
+										text="{ parts: [{path: '/tvs/0/sv'},
+                                				{path: 'i18n>base.currency'}],
+                       						 	type: 'sap.ui.model.type.Currency'
+												}"
 										state= "None" />
 								</HBox>
 							</CustomListItem>
@@ -99,7 +99,7 @@
 									</VBox>
 									<ObjectStatus
 										class="sapUiTinyMargin"
-										text="1010"
+										text="{/tvs/1/ev}"
 										state= "None" />
 								</HBox>
 							</CustomListItem>
