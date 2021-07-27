@@ -1,0 +1,130 @@
+ <mvc:View controllerName="ft.ui5.ftapp.controller.Debt"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:semantic="sap.f.semantic"
+  xmlns:mvc="sap.ui.core.mvc">
+  <App id="idAppControl" >
+      <pages>
+        <Page title="{i18n>debt.apptitle}"
+    		showNavButton="true"
+    		navButtonPress="onNavBack">
+	  <semantic:SemanticPage
+	  		id="masterPage"
+	  		preserveHeaderStateOnScroll="true"
+	  		toggleHeaderOnTitleClick="false">
+	  		<semantic:content>
+	  			<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
+	  			<List
+	  				id="list"
+	  				width="auto"
+	  				class="sapFDynamicPageAlignContent"
+	  				busyIndicatorDelay="{masterView>/delay}"
+	  				noDataText="{masterView>/noDataText}"
+	  				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+	  				growing="true"
+	  				growingScrollToLoad="true"
+	  				updateFinished=".onUpdateFinished"
+	  				selectionChange=".onSelectionChange">
+	  				<infoToolbar>
+	  					<Toolbar
+	  						active="true"
+	  						id="filterBar"
+	  						visible="{masterView>/isFilterBarVisible}"
+	  						press=".onOpenViewSettings">
+	  						<Title
+	  							id="filterBarLabel"
+	  							text="{masterView>/filterBarLabel}"
+	  							level="H3"/>
+	  					</Toolbar>
+	  				</infoToolbar>
+	  				<headerToolbar>
+	  					<OverflowToolbar>
+	  						<SearchField
+	  							id="searchField"
+	  							showRefreshButton="true"
+	  							tooltip="{i18n>masterSearchTooltip}"
+	  							search=".onSearch"
+	  							width="auto">
+	  							<layoutData>
+	  								<OverflowToolbarLayoutData
+	  									minWidth="150px"
+	  									maxWidth="240px"
+	  									shrinkable="true"
+	  									priority="NeverOverflow"/>
+	  							</layoutData>
+	  						</SearchField>
+	  						<ToolbarSpacer/>
+	  						<Button
+	  							id="sortButton"
+	  							press=".onOpenViewSettings"
+	  							icon="sap-icon://sort"
+	  							type="Transparent"/>
+	  						<Button
+	  							id="filterButton"
+	  							press=".onOpenViewSettings"
+	  							icon="sap-icon://filter"
+	  							type="Transparent"/>
+	  						<Button
+	  							id="groupButton"
+	  							press=".onOpenViewSettings"
+	  							icon="sap-icon://group-2"
+	  							type="Transparent"/>
+	  					</OverflowToolbar>
+	  				</headerToolbar>
+	  				<items>
+						<ObjectListItem
+							title="DB90"
+							type="Navigation"
+							press="onListItemPress"
+	  						number="100.203"
+	  						numberUnit="EUR"
+							showMarkers="true"
+							markFlagged="true"
+							markFavorite="true"
+							markLocked="true">
+								<firstStatus>
+									<ObjectStatus
+										text="inPayback"
+										state="Success" />
+								</firstStatus>
+								<secondStatus>
+									<ObjectStatus
+										text="Planning"
+										state="Error" />
+								</secondStatus>
+								<ObjectAttribute text="Start value 2011: 100 EUR" />
+								<ObjectAttribute text="Interest 12%, Annuity 100" />
+								<ObjectAttribute text="End value 2023: 350 EUR" />
+						</ObjectListItem>
+						<ObjectListItem
+							title="MasterDebt"
+							type="Navigation"
+							press="onListItemPress"
+	  						number="100.203"
+	  						numberUnit="EUR"
+							showMarkers="true"
+							markFlagged="true"
+							markFavorite="true"
+							markLocked="true">
+								<firstStatus>
+									<ObjectStatus
+										text="inPayback"
+										state="Success" />
+								</firstStatus>
+								<secondStatus>
+									<ObjectStatus
+										text="Planning"
+										state="Error" />
+								</secondStatus>
+								<ObjectAttribute text="Start value 2011: 100 EUR" />
+								<ObjectAttribute text="Interest 12%, Annuity 100" />
+								<ObjectAttribute text="End value 2023: 350 EUR" />
+						</ObjectListItem>
+	  				</items>
+	  			</List>
+	  		</semantic:content>
+	  	</semantic:SemanticPage>
+			  	</Page>
+				</pages>
+  </App>
+</mvc:View>

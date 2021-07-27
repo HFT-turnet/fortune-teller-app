@@ -10,40 +10,102 @@
 		showHeader="true"
 		enableScrolling="true" 
 		title="{i18n>base.title}">
+		<Bar>
+			<contentLeft>
+				<Label text="Generic Apps."/>
+			</contentLeft>
+		</Bar>
 		<f:GridContainer
-					id="grid1"
-					class="sapUiSmallMargin"
-					snapToRow="true">
-					<f:layout>
-						<f:GridContainerSettings rowSize="84px" columnSize="84px" gap="8px" />
-					</f:layout>
-					<f:layoutXS>
-						<f:GridContainerSettings rowSize="70px" columnSize="70px" gap="8px" />
-					</f:layoutXS>
-		   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Timevalue" subheader="Simulate amounts" press="handleTilePress" url="timevalue">
-						<layoutData>
-							<f:GridContainerItemLayoutData minRows="2" columns="2" />
-						</layoutData>
-						<TileContent footer="any Currency" >
-							<ImageContent src="sap-icon://time-overtime" />
-		   				</TileContent>
-		   			</GenericTile>
-		   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Site Info" subheader="" press="handleTilePress" url="info">
-						<layoutData>
-							<f:GridContainerItemLayoutData minRows="2" columns="2" />
-						</layoutData>
-						<TileContent footer="" >
-							<ImageContent src="sap-icon://hint" />
-		   				</TileContent>
-		   			</GenericTile>
-				</f:GridContainer>
+			id="grid1"
+			class="sapUiSmallMargin"
+			snapToRow="true">
+			<f:layout>
+				<f:GridContainerSettings rowSize="84px" columnSize="84px" gap="8px" />
+			</f:layout>
+			<f:layoutXS>
+				<f:GridContainerSettings rowSize="70px" columnSize="70px" gap="8px" />
+			</f:layoutXS>		
+
+   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Timevalue" subheader="Simulate amounts" press="handleTilePress" url="TimeValue">
+				<layoutData>
+					<f:GridContainerItemLayoutData minRows="2" columns="2" />
+				</layoutData>
+				<TileContent footer="any Currency" >
+					<ImageContent src="sap-icon://time-overtime" />
+   				</TileContent>
+   			</GenericTile>	
+   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Site Info" subheader="" press="handleTilePress" url="info">
+				<layoutData>
+					<f:GridContainerItemLayoutData minRows="2" columns="2" />
+				</layoutData>
+				<TileContent footer="" >
+					<ImageContent src="sap-icon://hint" />
+   				</TileContent>
+   			</GenericTile>
+
+		</f:GridContainer>
+					
+		<Bar>
+			<contentLeft>
+				<Label text="Personal"/>
+			</contentLeft>
+		</Bar>
+		<f:GridContainer
+			id="grid2"
+			class="sapUiSmallMargin"
+			snapToRow="true">
+			<f:layout>
+				<f:GridContainerSettings rowSize="84px" columnSize="84px" gap="8px" />
+			</f:layout>
+			<f:layoutXS>
+				<f:GridContainerSettings rowSize="70px" columnSize="70px" gap="8px" />
+			</f:layoutXS>
+
+   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Overview" subheader="Simulate amounts" press="handleTilePress" url="Debt">
+				<layoutData>
+					<f:GridContainerItemLayoutData minRows="2" columns="2" />
+				</layoutData>
+				<TileContent footer="any Currency" >
+					<ImageContent src="sap-icon://time-overtime" />
+   				</TileContent>
+   			</GenericTile>	
+			
+   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Cost of Life" subheader="Simulate amounts" press="handleTilePress" url="Debt">
+				<layoutData>
+					<f:GridContainerItemLayoutData minRows="2" columns="2" />
+				</layoutData>
+				<TileContent footer="any Currency" >
+					<ImageContent src="sap-icon://time-overtime" />
+   				</TileContent>
+   			</GenericTile>	
+			
+   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Investment" subheader="Simulate amounts" press="handleTilePress" url="Debt">
+				<layoutData>
+					<f:GridContainerItemLayoutData minRows="2" columns="2" />
+				</layoutData>
+				<TileContent footer="any Currency" >
+					<ImageContent src="sap-icon://time-overtime" />
+   				</TileContent>
+   			</GenericTile>
+
+   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Debt" subheader="Simulate amounts" press="handleTilePress" url="Debt">
+				<layoutData>
+					<f:GridContainerItemLayoutData minRows="2" columns="2" />
+				</layoutData>
+				<TileContent footer="any Currency" >
+					<ImageContent src="sap-icon://time-overtime" />
+   				</TileContent>
+   			</GenericTile>			
+
+		</f:GridContainer>
+		
 		<footer>
 			<Toolbar>
 				<ToolbarSpacer/>
 				 	<Button
 				            icon="sap-icon://account"
 							text="Login"
-				            press="onOpenLoginDialog" />
+				            press="testpress" />
 					<Button text="Logout" press="onLogout" />
 				<ToolbarSpacer/>
 			</Toolbar>

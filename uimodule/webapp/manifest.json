@@ -60,6 +60,9 @@
         }
       }
     },
+	"config":{
+		"apipath": "hallotest"
+	},
     "resources": {
       "css": [
         {
@@ -79,16 +82,23 @@
       "routes": [
         {
           "name": "RouteMainView",
-          "pattern": "RouteMainView",
+          "pattern": "",
           "target": [
             "TargetMainView"
           ]
         },
         {
-          "name": "timevalue",
-          "pattern": "Routetimevalue",
+          "name": "TimeValue",
+          "pattern": "TimeValue",
           "target": [
-            "Targettimevalue"
+            "TargetTimeValue"
+          ]
+        },
+        {
+          "name": "Debt",
+          "pattern": "Debt",
+          "target": [
+            "TargetDebt"
           ]
         }
       ],
@@ -96,13 +106,18 @@
         "TargetMainView": {
           "viewType": "XML",
           "viewLevel": 1,
-          "viewId": "idAppControl",
+          "viewId": "mainview",
           "viewName": "MainView"
         },
-        "Targettimevalue": {
+        "TargetTimeValue": {
           "viewType": "XML",
           "viewId": "timevalue",
-          "viewName": "timevalue"
+          "viewName": "TimeValue"
+        },
+        "TargetDebt": {
+          "viewType": "XML",
+          "viewId": "debt",
+          "viewName": "Debt"
         }
       }
     }

@@ -1,11 +1,11 @@
- <mvc:View controllerName="ft.ui5.ftapp.controller.timevalue"
+ <mvc:View controllerName="ft.ui5.ftapp.controller.TimeValue"
   displayBlock="true"
   xmlns="sap.m"
   xmlns:mvc="sap.ui.core.mvc"
   xmlns:l="sap.ui.layout"
   xmlns:f="sap.f"
   xmlns:card="sap.f.cards">
-  <App id="timevalue" >
+  <App id="idAppControl" >
     <pages>
       <Page title="{i18n>tv.apptitle}"
   		showNavButton="true"
@@ -33,7 +33,12 @@
 									id="inputStartva"
 									type="Number"
 									placeholder="100"
-									value="{/tvs/0/sv}"
+									value="{
+											path:'/tvs/0/sv',
+											type:'sap.ui.model.odata.type.Decimal',
+											formatOptions:{minFractionDigits:0,maxFractionDigits:10}, 
+											constraints:{minimum:0,precision:13,scale:3}
+										}"
 									valueLiveUpdate="true"
 									class="sapUiSmallMarginBottom" />
 								<Text text="{i18n>base.currency} {i18n>explain.attime}"/>
@@ -72,10 +77,9 @@
 						<f:GridContainerItemLayoutData minRows="4" columns="4" />
 					</f:layoutData>
 					<f:header>
-						<card:Header title="Timevalue Overview" subtitle="Purchase power per year | EUR" />
+						<card:Header title="{i18n>tv.tvoverview}" subtitle="{i18n>tv.tvsubtext}" />
 					</f:header>
 					<f:content>
-						
 						<List showSeparators="None" >
 							<CustomListItem>
 								<HBox alignItems="Center" justifyContent="SpaceBetween">
@@ -86,7 +90,8 @@
 										class="sapUiTinyMargin"
 										text="{ parts: [{path: '/tvs/0/sv'},
                                 				{path: 'i18n>base.currency'}],
-                       						 	type: 'sap.ui.model.type.Currency'
+                       						 	type: 'sap.ui.model.type.Currency',
+												format: 'short'
 												}"
 										state= "None" />
 								</HBox>
@@ -94,12 +99,14 @@
 							<CustomListItem>
 								<HBox alignItems="Center" justifyContent="SpaceBetween">
 									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
-										<Title level="H3" text="Future" />
-										<Text text="EUR" />
+										<Title level="H3" text="{/to}" />
 									</VBox>
 									<ObjectStatus
 										class="sapUiTinyMargin"
-										text="{/tvs/1/ev}"
+										text="{ parts: [{path: '/tvs/1/ev'},
+                                				{path: 'i18n>base.currency'}],
+                       						 	type: 'sap.ui.model.type.Currency'
+												}"
 										state= "None" />
 								</HBox>
 							</CustomListItem>
