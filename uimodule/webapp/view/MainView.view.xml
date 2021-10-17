@@ -12,7 +12,7 @@
 		title="{i18n>base.title}">
 		<Bar>
 			<contentLeft>
-				<Label text="Generic Apps."/>
+				<Label text="{i18n>portal.genericapps}"/>
 			</contentLeft>
 		</Bar>
 		<f:GridContainer
@@ -25,16 +25,23 @@
 			<f:layoutXS>
 				<f:GridContainerSettings rowSize="70px" columnSize="70px" gap="8px" />
 			</f:layoutXS>		
-
-   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Timevalue" subheader="Simulate amounts" press="handleTilePress" url="TimeValue">
+   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>psim.apptitle}" subheader="{i18n>psim.appsubtitle}" press="handleTilePress" url="PublicSimulation">
 				<layoutData>
 					<f:GridContainerItemLayoutData minRows="2" columns="2" />
 				</layoutData>
-				<TileContent footer="any Currency" >
+				<TileContent footer="{i18n>base.currency}" >
 					<ImageContent src="sap-icon://time-overtime" />
    				</TileContent>
    			</GenericTile>	
-   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Site Info" subheader="" press="handleTilePress" url="info">
+   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ptv.apptitle}" subheader="{i18n>ptv.appsubtitle}" press="handleTilePress" url="TimeValue">
+				<layoutData>
+					<f:GridContainerItemLayoutData minRows="2" columns="2" />
+				</layoutData>
+				<TileContent footer="{i18n>base.currency}" >
+					<ImageContent src="sap-icon://time-overtime" />
+   				</TileContent>
+   			</GenericTile>	
+   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>portal.infoapptitle}" subheader="{i18n>portal.infoappsubtitle}" press="callFTsite" url="info">
 				<layoutData>
 					<f:GridContainerItemLayoutData minRows="2" columns="2" />
 				</layoutData>
@@ -42,12 +49,11 @@
 					<ImageContent src="sap-icon://hint" />
    				</TileContent>
    			</GenericTile>
-
 		</f:GridContainer>
 					
 		<Bar>
 			<contentLeft>
-				<Label text="Personal"/>
+				<Label text="{i18n>portal.personalapps}"/>
 			</contentLeft>
 		</Bar>
 		<f:GridContainer
@@ -61,38 +67,11 @@
 				<f:GridContainerSettings rowSize="70px" columnSize="70px" gap="8px" />
 			</f:layoutXS>
 
-   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Overview" subheader="Simulate amounts" press="handleTilePress" url="Debt">
+   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>debt.apptitle}" subheader="{i18n>debt.appsubtitle}" press="notimplemented" url="#">
 				<layoutData>
 					<f:GridContainerItemLayoutData minRows="2" columns="2" />
 				</layoutData>
-				<TileContent footer="any Currency" >
-					<ImageContent src="sap-icon://time-overtime" />
-   				</TileContent>
-   			</GenericTile>	
-			
-   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Cost of Life" subheader="Simulate amounts" press="handleTilePress" url="Debt">
-				<layoutData>
-					<f:GridContainerItemLayoutData minRows="2" columns="2" />
-				</layoutData>
-				<TileContent footer="any Currency" >
-					<ImageContent src="sap-icon://time-overtime" />
-   				</TileContent>
-   			</GenericTile>	
-			
-   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Investment" subheader="Simulate amounts" press="handleTilePress" url="Debt">
-				<layoutData>
-					<f:GridContainerItemLayoutData minRows="2" columns="2" />
-				</layoutData>
-				<TileContent footer="any Currency" >
-					<ImageContent src="sap-icon://time-overtime" />
-   				</TileContent>
-   			</GenericTile>
-
-   			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Debt" subheader="Simulate amounts" press="handleTilePress" url="Debt">
-				<layoutData>
-					<f:GridContainerItemLayoutData minRows="2" columns="2" />
-				</layoutData>
-				<TileContent footer="any Currency" >
+				<TileContent footer="{i18n>base.currency}" >
 					<ImageContent src="sap-icon://time-overtime" />
    				</TileContent>
    			</GenericTile>			
