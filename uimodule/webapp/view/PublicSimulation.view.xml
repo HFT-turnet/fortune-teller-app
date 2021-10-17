@@ -1,0 +1,172 @@
+ <mvc:View controllerName="ft.ui5.ftapp.controller.PublicSimulation"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:l="sap.ui.layout"
+  xmlns:f="sap.f"
+  xmlns:card="sap.f.cards">
+  <App id="idAppControl" >
+    <pages>
+      <Page title="{i18n>psim.apptitle}"
+  		showNavButton="true"
+  		navButtonPress="onNavBack">
+        <content>
+			<IconTabBar
+				id="idTabbar"
+				expanded="{device>/isNoPhone}"
+				class="sapUiResponsiveContentPadding"
+				select="onChangetab">
+				<items>
+					<IconTabFilter text="{i18n>psim.assumptions}" key="intro">
+						<Panel headerText="{i18n>psim.explanations}">
+							<Text text="{i18n>psim.howto}" />
+						</Panel>
+						<Panel headerText="{i18n>psim.enterassumptions}">
+							<l:VerticalLayout class="sapUiContentPadding">
+									<Input type="Number"
+											value="{
+												path:'/environment/from',
+												type:'sap.ui.model.type.Integer',
+												formatOptions: {minIntegerDigits:4, maxIntegerDigits:4},
+												constraints:{minimum:2020,maximum:2150}
+											}"
+										  description="{i18n>explain.entryyear}" fieldWidth="{60%}"/>
+									<Input type="Number" 
+											value="{
+												path:'/environment/to',
+												type:'sap.ui.model.type.Integer',
+												formatOptions: {
+												minIntegerDigits:4, maxIntegerDigits:4
+												},
+												constraints:{minimum:2020,maximum:2150}
+											}"
+												description="{i18n>explain.simulationyear}" fieldWidth="{60%}"/>
+									<Input type="Text" 
+										value="{
+											path: '/environment/i',
+											type:'sap.ui.model.type.Float', 
+											constraints: {maximum : 1}, 
+											formatter: '.formatter.topercent'
+											}" 										
+										description="{i18n>explain.inflation}" valueLiveUpdate="true" fieldWidth="{60%}"/>
+							</l:VerticalLayout>
+						</Panel>
+					</IconTabFilter>
+					<IconTabFilter text="{i18n>psim.expenses}" key="expense">
+						<Table
+							items="{/expenses/tvs}" 
+							>
+							<columns>
+								<Column><Text text="{i18n>base.position}" /></Column>
+								<Column ><Text text="{i18n>base.currency} {i18n>explain.entryyear}" /></Column>
+								<Column width="65px" hAlign="End" ><Text text="{i18n>base.from}" /></Column>
+								<Column width="65px" hAlign="End" ><Text text="{i18n>base.to}" /></Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier title="{label}" text="" />
+										<Input
+											type="Number"
+											width="100px"
+											placeholder="100"
+											value="{
+													path:'cto',
+													type:'sap.ui.model.odata.type.Decimal',
+													formatOptions:{minFractionDigits:0,maxFractionDigits:10}, 
+													constraints:{minimum:0,precision:13,scale:3}
+												}"
+											valueLiveUpdate="true"
+											class="sapUiSmallMarginBottom" />
+										<Input
+											type="Number"
+											width="55px"
+											placeholder="-"
+											value="{
+													path:'fromt'
+												}"
+											valueLiveUpdate="true"
+											class="sapUiSmallMarginBottom" />
+										<Input
+											type="Number"
+											width="55px"
+											placeholder="-"
+											value="{
+													path:'tot'
+												}"
+											valueLiveUpdate="true"
+											class="sapUiSmallMarginBottom" />
+											
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+					<IconTabFilter text="{i18n>psim.income}" key="income">
+						<Table
+							items="{/incomes/tvs}" 
+							>
+							<columns>
+								<Column><Text text="{i18n>base.position}" /></Column>
+								<Column ><Text text="{i18n>base.currency} {i18n>explain.entryyear}" /></Column>
+								<Column width="65px" hAlign="End" ><Text text="{i18n>base.from}" /></Column>
+								<Column width="65px" hAlign="End" ><Text text="{i18n>base.to}" /></Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier title="{label}" text="" />
+										<Input
+											type="Number"
+											width="100px"
+											placeholder="100"
+											value="{
+													path:'cto',
+													type:'sap.ui.model.odata.type.Decimal',
+													formatOptions:{minFractionDigits:0,maxFractionDigits:10}, 
+													constraints:{minimum:0,precision:13,scale:3}
+												}"
+											valueLiveUpdate="true"
+											class="sapUiSmallMarginBottom" />
+										<Input
+											type="Number"
+											width="55px"
+											placeholder="-"
+											value="{
+													path:'fromt'
+												}"
+											valueLiveUpdate="true"
+											class="sapUiSmallMarginBottom" />
+										<Input
+											type="Number"
+											width="55px"
+											placeholder="-"
+											value="{
+													path:'tot'
+												}"
+											valueLiveUpdate="true"
+											class="sapUiSmallMarginBottom" />
+											
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+					<IconTabFilter text="{i18n>psim.total}" key="summary">
+						<mvc:XMLView id="summary" viewName="ft.ui5.ftapp.view.PartTreetable"/>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+        </content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Label text="{messages>/info}" />
+				<Label text="{messages>/source}" />
+				<Button type="Accept" text="{i18n>button.update}" press="onUpdate" />
+			</OverflowToolbar>
+		</footer>
+      </Page>
+    </pages>
+  </App>
+</mvc:View>

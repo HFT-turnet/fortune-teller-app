@@ -1,0 +1,61 @@
+to INclude:  <mvc:XMLView id="expensepnl" viewName="ft.ui5.ftapp.view.PartEnterPnl"/>
+
+ <mvc:View controllerName="ft.ui5.ftapp.controller.PublicSimulation"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:f="sap.f">
+						<Table
+							id="idPnL"
+							items="{pnldata>/tvs}" 
+							>
+							<columns>
+								<Column><Text text="Position" /></Column>
+								<Column ><Text text="EUR Basis Jahr" /></Column>
+								<Column width="60px" hAlign="End" ><Text text="Limit min" /></Column>
+								<Column width="60px" hAlign="End" ><Text text="Limit max" /></Column>
+								
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier title="{pnldata>label}" text="" />
+										<Input
+											id="inputStartva"
+											type="Number"
+											width="100px"
+											placeholder="100"
+											value="{
+													path:'pnldata>cto',
+													type:'sap.ui.model.odata.type.Decimal',
+													formatOptions:{minFractionDigits:0,maxFractionDigits:10}, 
+													constraints:{minimum:0,precision:13,scale:3}
+												}"
+											valueLiveUpdate="true"
+											class="sapUiSmallMarginBottom" />
+										<Input
+											id="inputLimitmin"
+											type="Number"
+											width="25px"
+											placeholder="-"
+											value="{
+													path:'pnldata>fromt'
+												}"
+											valueLiveUpdate="true"
+											class="sapUiSmallMarginBottom" />
+										<Input
+											id="inputLimitmax"
+											type="Number"
+											width="25px"
+											placeholder="-"
+											value="{
+													path:'pnldata>tot'
+												}"
+											valueLiveUpdate="true"
+											class="sapUiSmallMarginBottom" />
+											
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+</mvc:View>

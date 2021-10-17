@@ -1,0 +1,43 @@
+ <mvc:View controllerName="ft.ui5.ftapp.controller.PublicSimulation"
+  displayBlock="true"
+  xmlns="sap.ui.table"
+  xmlns:m="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:u="sap.ui.unified"
+  xmlns:core="sap.ui.core">
+  				<TreeTable
+                      id="TreeTableBasic"
+                      rows="{path:'results>/entries', parameters: {arrayNames:['positions']}}"
+                      selectionMode="None"
+                      enableSelectAll="false"
+                      ariaLabelledBy="title">
+                  <extension>
+                      <m:OverflowToolbar style="Clear">
+                          <m:Title id="title" text="{i18n>psim.totallong}"/>
+                          <m:ToolbarSpacer/>
+                          <m:Button text="{i18n>button.collapseall}" press="onCollapseAll"/>
+						  <m:Button text="{i18n>button.expandall}" press="onExpandAll"/>
+                      </m:OverflowToolbar>
+                  </extension>
+                  <columns>
+                      <Column width="13rem">
+                          <m:Label text="Position"/>
+                          <template>
+                              <m:Text text="{results>label}" wrapping="false" />
+                          </template>
+                      </Column>
+                      <Column width="9rem">
+                          <m:Label text="{path: 'results>/environment/year_now'}"/>
+                          <template>
+                              <u:Currency value="{path: 'results>cto_now', formatter: '.formatter.stringtofloat'}" currency="EUR"/>
+                          </template>
+                      </Column>
+                      <Column width="11rem">
+                          <m:Label text="{results>/environment/year_then}"/>
+                          <template>
+                              <u:Currency value="{path: 'results>cto_then', formatter: '.formatter.stringtofloat'}" currency="EUR"/>
+                          </template>
+                      </Column>
+                  </columns>
+              </TreeTable>
+</mvc:View>

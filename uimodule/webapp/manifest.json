@@ -95,6 +95,13 @@
           ]
         },
         {
+          "name": "PublicSimulation",
+          "pattern": "PublicSimulation",
+          "target": [
+            "TargetPublicSimulation"
+          ]
+        },
+        {
           "name": "Debt",
           "pattern": "Debt",
           "target": [
@@ -114,6 +121,11 @@
           "viewId": "timevalue",
           "viewName": "TimeValue"
         },
+		"TargetPublicSimulation": {
+		  "viewType": "XML",
+		  "viewId": "publicsimulation",
+		  "viewName": "PublicSimulation"
+		        },
         "TargetDebt": {
           "viewType": "XML",
           "viewId": "debt",
