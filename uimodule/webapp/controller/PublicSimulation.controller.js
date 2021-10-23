@@ -16,12 +16,12 @@ sap.ui.define([
 			var callpath=ftapipath + "public/summary_report"
 			envelope.loadData(callpath, '', true, "GET", null, false,'');
 			this.setModel(envelope);
-			var that=this;
-						
-			//envelope.attachRequestCompleted(function() {
-			//	var envelope=that.getModel();
-			//	console.log(envelope.oData);
-			//});
+			
+			var that=this;			
+			envelope.attachRequestCompleted(function() {
+				envelope.oData.environment.i=envelope.oData.environment.i*100;
+				envelope.refresh();
+			});
 			
 			//console.log(envelope);
 			
@@ -73,11 +73,14 @@ sap.ui.define([
 			// get envelope
 			var envelope=this.getModel();
 			
+			// revert i input to decimal
+			envelope.oData.environment.i=envelope.oData.environment.i/100;
+			
 			// update key data in subsets from environment
-			envelope.oData.expenses.t=envelope.oData.environment.from
-			envelope.oData.incomes.t=envelope.oData.environment.from
-			envelope.oData.expenses.i=envelope.oData.environment.i
-			envelope.oData.incomes.i=envelope.oData.environment.i
+			envelope.oData.expenses.t=envelope.oData.environment.from;
+			envelope.oData.incomes.t=envelope.oData.environment.from;
+			envelope.oData.expenses.i=envelope.oData.environment.i;
+			envelope.oData.incomes.i=envelope.oData.environment.i;
 			
 			// Load results
 			var results = this.byId("summary").getModel("results");
@@ -85,9 +88,10 @@ sap.ui.define([
 			var callpath=ftapipath + "public/summary_report"
 			var oHeaders = {
 							"Content-Type": "application/json"
-						};
-						
+						};		
 			results.loadData(callpath, envelope.getJSON(), true, "POST", null, false, oHeaders);
+			// revert i input to inputform
+			envelope.oData.environment.i=envelope.oData.environment.i*100;
 		}
     });
 });

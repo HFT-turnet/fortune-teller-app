@@ -41,14 +41,18 @@
 												constraints:{minimum:2020,maximum:2150}
 											}"
 												description="{i18n>explain.simulationyear}" fieldWidth="{60%}"/>
-									<Input type="Text" 
-										value="{
-											path: '/environment/i',
-											type:'sap.ui.model.type.Float', 
-											constraints: {maximum : 1}, 
-											formatter: '.formatter.topercent'
-											}" 										
-										description="{i18n>explain.inflation}" valueLiveUpdate="true" fieldWidth="{60%}"/>
+									<StepInput
+											id="inputIrate"
+											value="{
+												path: '/environment/i'
+												}"
+											displayValuePrecision="1"
+											min="0"
+											max="100"
+											step="0.1"
+											description="{i18n>explain.percent} {i18n>explain.inflation}" 
+											fieldWidth="{60%}"
+											/>
 							</l:VerticalLayout>
 						</Panel>
 					</IconTabFilter>
@@ -65,7 +69,12 @@
 							<items>
 								<ColumnListItem>
 									<cells>
-										<ObjectIdentifier title="{label}" text="" />
+										<ObjectIdentifier 
+											title="{label}" 
+											text="{
+												path: 'inflation',
+												formatter: '.formatter.inflationtotext'
+												}" />
 										<Input
 											type="Number"
 											width="100px"

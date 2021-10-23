@@ -6,60 +6,40 @@ sap.ui.define([
 
     return Controller.extend("ft.ui5.ftapp.controller.TimeValue", {
 		onInit: function () {
-			// Demo Data
-            //var oData = {
-            //   newvalue : 100
-            //   }
-			
-			var dataset = new JSONModel();
-			var callpath=ftapipath + "calcs/tv_model"
-			dataset.loadData(callpath, '', true, "GET", null, false,'');
-			var that = this;			
-			dataset.attachRequestCompleted(function() {that.setdates();});
-			//dataset.Odata.from=
-			//console.log (this.monthyearset(new Date(Date.now())));
-			//console.log(dataset);
-			this.setModel(dataset);
-		},
-		setdates: function(){
-			var dataset=this.getModel();
-			console.log(dataset.oData.from);
-			if (dataset.oData.from==null) {
-					dataset.oData.from=this.monthyearset(new Date(Date.now()));
-					this.byId("datepickerStart").mProperties.dateValue=new Date(Date.now());
-					this.byId("datepickerStart").setValue(dataset.oData.from);
-				}
-			console.log(dataset.oData.from);
-			console.log(this.byId("datepickerStart"));
-			//this.byId("datepickerStart").value=dataset.oData.from;
-			dataset.refresh();
+			sap.ui.getCore().getMessageManager().registerObject(this.getView(), true);
+			var datanow = new JSONModel();
+			var callpath=ftapipath + "public/timeslice?type=single"
+			datanow.loadData(callpath, '', true, "GET", null, false,'');
+			this.setModel(datanow);
+			//console.log(datanow);
+			var cashvaluethen = new JSONModel();
+			//datathen.oData.t=0
+			this.setModel(cashvaluethen, "cashvaluethen");
+			var costvaluethen = new JSONModel();
+			this.setModel(costvaluethen, "costvaluethen");
+			datanow.attachRequestCompleted(function() {
+				datanow.oData.i=datanow.oData.i*100;
+				datanow.refresh();
+				cashvaluethen.oData.t=datanow.oData.t+10;
+				cashvaluethen.refresh();
+			});
 		},
 		
 		doSimulation: function () {
-			var data=this.getModel();
-			data.oData.r=data.oData.r/12;
-			//console.log(this.byId("datepickerStart").mProperties.dateValue);//.getproperties("dateValue"));
-			//console.log(this.byId("datepickerEnd").mProperties.dateValue.getMonth());
-			data.oData.periods=this.byId("datepickerEnd").mProperties.dateValue.getMonth()-this.byId("datepickerStart").mProperties.dateValue.getMonth()+ (12 * (this.byId("datepickerEnd").mProperties.dateValue.getFullYear() - this.byId("datepickerStart").mProperties.dateValue.getFullYear()));
-			data.oData.from=this.monthyearset(this.byId("datepickerStart").mProperties.dateValue);
-			data.oData.to=this.monthyearset(this.byId("datepickerEnd").mProperties.dateValue);
-			var dataset = new JSONModel();
-			var callpath=ftapipath + "calcs/tv_get";
-			//var params = "bkrid="+bkrid+"&postset="+JSON.stringify(posting.oData);
+			var datanow=this.getModel();
+			var cashvaluethen=this.getModel("cashvaluethen");
+			datanow.oData.i=-1*datanow.oData.i/100;
+			var callpath=ftapipath + "public/timeslice?targetyear="+cashvaluethen.oData.t;
 			var oHeaders = {
 							"Content-Type": "application/json"
 						};
-			//dataset.loadData("http://localhost:3000/v1/calcs/tv_model", params, true, "POST", null, false, oHeaders);
-			dataset.loadData(callpath, JSON.stringify(data.oData), true, "POST", null, false, oHeaders);
-			console.log (dataset);
-			//dataset.loadData("http://localhost:3000/v1/calcs/tv_model", '', true, "POST", null, false,'');
-			//console.log(dataset);
-			this.setModel(dataset);
-		},
-		monthyearset: function(date) {
-			var date=new Date(date);
-			var retour=date.getMonth()+1 +"-"+date.getFullYear();
-			return retour;
+			cashvaluethen.loadData(callpath, JSON.stringify(datanow.oData), true, "POST", null, false, oHeaders);
+			
+			var costvaluethen=this.getModel("costvaluethen");
+			datanow.oData.i=-1*datanow.oData.i;
+			costvaluethen.loadData(callpath, JSON.stringify(datanow.oData), true, "POST", null, false, oHeaders);
+			datanow.oData.i=datanow.oData.i*100;
+			//console.log (datathen);
 		}
     });
 });

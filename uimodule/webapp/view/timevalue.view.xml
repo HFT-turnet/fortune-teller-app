@@ -7,16 +7,16 @@
   xmlns:card="sap.f.cards">
   <App id="idAppControl" >
     <pages>
-      <Page title="{i18n>tv.apptitle}"
+      <Page title="{i18n>ptv.apptitle}"
   		showNavButton="true"
   		navButtonPress="onNavBack">
         <content>
 			<f:GridContainer id="demoGrid" class="sapUiSmallMargin" columnsChange=".onGridColumnsChange">
 				<f:layout>
-					<f:GridContainerSettings rowSize="84px" columnSize="84px" gap="8px" />
+					<f:GridContainerSettings rowSize="5px" columnSize="84px" gap="8px" />
 				</f:layout>
 				<f:layoutXS>
-					<f:GridContainerSettings rowSize="70px" columnSize="70px" gap="8px" />
+					<f:GridContainerSettings rowSize="5px" columnSize="70px" gap="8px" />
 				</f:layoutXS>
 				<f:Card>
 					<f:layoutData>
@@ -28,67 +28,69 @@
 					</f:header>
 					<f:content>
 						<l:VerticalLayout class="sapUiContentPadding">
-							<l:HorizontalLayout class="sapUiContentPadding" >
-								<Input
-									id="inputStartva"
-									type="Number"
-									placeholder="100"
-									value="{
-											path:'/tvs/0/sv',
-											type:'sap.ui.model.odata.type.Decimal',
-											formatOptions:{minFractionDigits:0,maxFractionDigits:10}, 
-											constraints:{minimum:0,precision:13,scale:3}
-										}"
-									valueLiveUpdate="true"
-									class="sapUiSmallMarginBottom" />
-								<Text text="{i18n>base.currency} {i18n>explain.attime}"/>
-								<DatePicker
-									id="datepickerStart"
-									displayFormat="MM-y"
-									change="handleChange"
-									class="sapUiSmallMarginBottom"/>
-							</l:HorizontalLayout>
-							<l:HorizontalLayout class="sapUiContentPadding" >			
-								<Text text="{i18n>explain.tobesimulated} {i18n>explain.attime}"/>
-							<DatePicker
-									id="datepickerEnd"
-									displayFormat="MM-y"
-									change="handleChange"
-									class="sapUiSmallMarginBottom" />
-							</l:HorizontalLayout>
-							<l:HorizontalLayout class="sapUiContentPadding" >	
-							<Text text="{i18n>explain.withpercyear} {i18n>explain.inflation} {i18n>explain.of}"/>
+							<Input
+								id="inputStartva"
+								type="Number"
+								placeholder="100.00"
+								value="{
+										path:'/tvs/0/cto',
+										type:'sap.ui.model.odata.type.Decimal',
+										formatOptions:{}, 
+										constraints:{}
+									}"
+								valueLiveUpdate="true"
+								description="{i18n>base.currency} {i18n>explain.attime}" 
+								fieldWidth="80px"
+								class="sapUiSmallMarginBottom" />
+							<Input 
+								type="Number"
+								value="{
+									path:'/t',
+									type:'sap.ui.model.type.Integer',
+									formatOptions: {minIntegerDigits:4, maxIntegerDigits:4},
+									constraints:{minimum:2020,maximum:2150}
+								}"
+								description="{i18n>explain.tobesimulated} {i18n>explain.attime}" 
+								fieldWidth="60px"/>
+							<Input type="Number"
+								value="{
+									path:'cashvaluethen>/t',
+									type:'sap.ui.model.type.Integer',
+									formatOptions: {minIntegerDigits:4, maxIntegerDigits:4},
+									constraints:{minimum:2020,maximum:2150}
+								}"  
+								description="{i18n>explain.withpercyear} {i18n>explain.inflation} {i18n>explain.of}" 
+								fieldWidth="60px"/>
 							<StepInput
-									id="inputIrate"
-									value="{/r}"
-									displayValuePrecision="1"
-									min="0"
-									max="100"
-									width="3px"
-									step="1"
-									change="onChange" />
-							</l:HorizontalLayout>
+								id="inputIrate"
+								value="{/i}"
+								displayValuePrecision="1"
+								min="0"
+								max="100"
+								width="3px"
+								step="0.1"
+								change="onChange" />
 							<Button text="{i18n>button.simulate}" type="Emphasized" press="doSimulation" />
 						</l:VerticalLayout>
 					</f:content>
 				</f:Card>
 				<f:Card>
 					<f:layoutData>
-						<f:GridContainerItemLayoutData minRows="4" columns="4" />
+						<f:GridContainerItemLayoutData minRows="0" columns="3" />
 					</f:layoutData>
 					<f:header>
-						<card:Header title="{i18n>tv.tvoverview}" subtitle="{i18n>tv.tvsubtext}" />
+						<card:Header title="{i18n>explain.purchasepower}" subtitle="{i18n>explain.atpricestoday}" />
 					</f:header>
 					<f:content>
 						<List showSeparators="None" >
 							<CustomListItem>
 								<HBox alignItems="Center" justifyContent="SpaceBetween">
 									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
-										<Title level="H3" text="{/from}" />
+										<Title level="H3" text="{/t}" />
 									</VBox>
 									<ObjectStatus
 										class="sapUiTinyMargin"
-										text="{ parts: [{path: '/tvs/0/sv'},
+										text="{ parts: [{path: '/tvs/0/cto'},
                                 				{path: 'i18n>base.currency'}],
                        						 	type: 'sap.ui.model.type.Currency',
 												format: 'short'
@@ -99,11 +101,11 @@
 							<CustomListItem>
 								<HBox alignItems="Center" justifyContent="SpaceBetween">
 									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
-										<Title level="H3" text="{/to}" />
+										<Title level="H3" text="{cashvaluethen>/t}" />
 									</VBox>
 									<ObjectStatus
 										class="sapUiTinyMargin"
-										text="{ parts: [{path: '/tvs/1/ev'},
+										text="{ parts: [{path: 'cashvaluethen>/tvs/0/cto'},
                                 				{path: 'i18n>base.currency'}],
                        						 	type: 'sap.ui.model.type.Currency'
 												}"
@@ -113,8 +115,47 @@
 						</List>
 					</f:content>
 				</f:Card>
-				
-				
+				<f:Card>
+					<f:layoutData>
+						<f:GridContainerItemLayoutData minRows="0" columns="3" />
+					</f:layoutData>
+					<f:header>
+						<card:Header title="{i18n>explain.priceincrease}" subtitle="{i18n>explain.pricesgrowinflation}" />
+					</f:header>
+					<f:content>
+						<List showSeparators="None" >
+							<CustomListItem>
+								<HBox alignItems="Center" justifyContent="SpaceBetween">
+									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+										<Title level="H3" text="{/t}" />
+									</VBox>
+									<ObjectStatus
+										class="sapUiTinyMargin"
+										text="{ parts: [{path: '/tvs/0/cto'},
+                                				{path: 'i18n>base.currency'}],
+                       						 	type: 'sap.ui.model.type.Currency',
+												format: 'short'
+												}"
+										state= "None" />
+								</HBox>
+							</CustomListItem>
+							<CustomListItem>
+								<HBox alignItems="Center" justifyContent="SpaceBetween">
+									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+										<Title level="H3" text="{cashvaluethen>/t}" />
+									</VBox>
+									<ObjectStatus
+										class="sapUiTinyMargin"
+										text="{ parts: [{path: 'costvaluethen>/tvs/0/cto'},
+                                				{path: 'i18n>base.currency'}],
+                       						 	type: 'sap.ui.model.type.Currency'
+												}"
+										state= "None" />
+								</HBox>
+							</CustomListItem>
+						</List>
+					</f:content>
+				</f:Card>
 			</f:GridContainer>
         </content>
       </Page>
